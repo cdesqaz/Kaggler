@@ -8,3 +8,5 @@ matplotlib
 kaggle
 keras
 xgboost
+boto3
+gsutil
