@@ -38,6 +38,26 @@ python setup.py build_ext --inplace
 (sudo) python setup.py install
 ```
 
+## Importing Datasets
+If you are reading this, you are likely attempting to run experiments on AWS via [EIN](https://github.com/millejoh/emacs-ipython-notebook).
+
+There are TWO kinds of datasets, those associated with a competition, and those associated with a particular Kaggle user.
+
+For the first kind ("competition"), import as follows:
+```
+from kaggler.gcspath import efs_populate
+my_competition = 'liverpool-ion-switching'
+efs_populate('/var/tmp/{}'.format(my_competition), competition=my_competition)
+```
+
+For the second kind ("user"), import as follows:
+```
+from kaggler.gcspath import efs_populate
+from os.path import basename
+my_dataset = 'cdeotte/data-without-drift'
+efs_populate('/var/tmp/{}'.format(basename(my_dataset)), dataset=my_dataset)
+```
+
 ## Data I/O
 Kaggler supports CSV (`.csv`), LibSVM (`.sps`), and HDF5 (`.h5`) file formats:
 ```
